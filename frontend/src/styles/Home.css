@@ -13,7 +13,7 @@ div {
   font-size: 24px;
 }
 
-/* Styles for individual notes - assuming your Note component has some container element */
+/* Styles for individual notes */
 .note {
   background-color: #f9f9f9;
   border-left: 5px solid #007bff;
@@ -67,43 +67,54 @@ form input[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-
 /* Estilo para o sidebar */
-
 .container {
   display: flex;
   flex-direction: row;
 }
 
 .sidebar {
+  position: relative; /* Manter isso para posicionar o botão corretamente */
   width: 200px;
   background-color: #f0f0f0;
   padding: 20px;
   border-right: 1px solid #ddd;
   transition: width 0.5s;
+  height: 100vh; /* Garante que o sidebar ocupe a altura total da tela */
 }
 
 .sidebar.open {
-  width: 200px;
+  width: 200px; /* Largura total quando aberto */
 }
 
 .sidebar.closed {
-  width: 0;
+  width: 30px; /* Largura reduzida quando fechado */
+  background-color: rgba(240, 240, 240, 0.5); /* Fundo semi-translúcido */
 }
 
 .toggle-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 10px; /* Ajuste a posição vertical para cima */
+  left: 100%; /* Mova para a direita */
+  margin-left: 10px; /* Espaço extra para que não fique muito colado */
   background-color: #fff;
   border: none;
   padding: 10px;
   cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* Garante que o botão fique acima de outros elementos */
 }
 
 .main-content {
   flex: 1;
   padding: 20px;
+  margin-top: 60px; /* Adiciona espaço acima do conteúdo principal */
 }
 
 .hidden {
@@ -111,12 +122,67 @@ form input[type="submit"]:hover {
 }
 
 /* Icones */
+.sidebar ul {
+  list-style: none; /* Remover marcadores */
+  padding: 0; /* Remover padding padrão */
+  margin-bottom: auto; /* Empurrar a lista para cima */
+}
 
 .sidebar ul li {
   display: flex;
   align-items: center;
+  margin-bottom: 10px; /* Espaçamento entre os itens */
 }
 
 .sidebar ul li svg {
   margin-right: 10px;
+}
+
+/* Estilo para os links na sidebar */
+.sidebar a {
+  text-decoration: none; /* Remove o sublinhado */
+  color: #007bff; /* Cor agradável para os links */
+  display: flex; /* Para alinhar ícones e texto */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 10px; /* Adiciona espaçamento interno */
+  border-radius: 4px; /* Arredonda os cantos */
+  transition: background-color 0.3s; /* Transição suave para o fundo */
+}
+
+.sidebar a:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Fundo leve ao passar o mouse */
+  color: #0056b3; /* Cor do texto ao passar o mouse */
+}
+
+.sidebar h2 {
+  display: flex; /* Para alinhar o ícone e o texto */
+  align-items: center; /* Centraliza verticalmente */
+  color: #333; /* Cor do texto */
+  font-size: 24px; /* Tamanho da fonte */
+  margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+.sidebar h2 .fa-bars {
+  color: #007bff; /* Cor do ícone */
+  font-size: 1.5rem; /* Tamanho do ícone */
+}
+
+.sidebar h2 .fa-bars {
+  margin-right: 10px; /* Ajuste o valor conforme necessário */
+}
+
+/* Logout Button */
+.logout-button {
+  margin-top: 20px; /* Espaçamento acima do botão */
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px; /* Arredondar os cantos */
+  cursor: pointer;
+  width: 100%; /* Para ocupar toda a largura do sidebar */
+}
+
+.logout-button:hover {
+  background-color: #444; /* Leve mudança de cor na passagem do mouse */
 }
